@@ -30,14 +30,17 @@ healthCheck:
   periodSeconds: 10
 
 env:
-  - name: SPRING_PROFILES_ACTIVE
-    value: "dev"
   - name: JAVA_OPTS
     value: "-Xms256m -Xmx512m"
-  - name: DB_HOST
-    value: "postgres.guest-book-api.svc"
-  - name: AWS_REGION
-    value: "us-east-1"
+
+configMap:
+  SPRING_PROFILES_ACTIVE: "dev"
+  DB_HOST: "postgres.guest-book-api.svc"
+  DB_PORT: "5432"
+  DB_NAME: "guestbook"
+  AWS_REGION: "us-east-1"
+  LOG_LEVEL: "info"
+  SERVER_PORT: "8080"
 
 secrets:
   enabled: true
@@ -47,7 +50,7 @@ secrets:
 aws:
   region: "us-east-1"
   accountId: "058264152807"
-  oidcArn: "arn:aws:iam::<account_number>:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/8705EDBAAE73AB1AFEAEBC77C0E9846A"
+  oidcArn: "arn:aws:iam::<account-number>:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/8705EDBAAE73AB1AFEAEBC77C0E9846A"
   oidcIssuer: "oidc.eks.us-east-1.amazonaws.com/id/8705EDBAAE73AB1AFEAEBC77C0E9846A"
 
 service:
