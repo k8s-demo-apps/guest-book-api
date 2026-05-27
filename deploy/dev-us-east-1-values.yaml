@@ -1,0 +1,63 @@
+app:
+  name: guest-book-api
+  team: guestbook
+  version: "1.0.0"
+
+image:
+  repository: 058264152807.dkr.ecr.us-east-1.amazonaws.com/guest-book-api
+  tag: "1.0.0"
+
+replicas: 2
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPU: 75
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    memory: 1Gi
+
+port: 8080
+
+healthCheck:
+  path: /actuator/health
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "dev"
+  - name: JAVA_OPTS
+    value: "-Xms256m -Xmx512m"
+  - name: DB_HOST
+    value: "postgres.guest-book-api.svc"
+  - name: AWS_REGION
+    value: "us-east-1"
+
+secrets:
+  enabled: true
+  provider: aws
+  name: dev/us-east-1/guest-book-api/credentials
+
+aws:
+  region: "us-east-1"
+  accountId: "058264152807"
+  oidcArn: "arn:aws:iam::<account_number>:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/8705EDBAAE73AB1AFEAEBC77C0E9846A"
+  oidcIssuer: "oidc.eks.us-east-1.amazonaws.com/id/8705EDBAAE73AB1AFEAEBC77C0E9846A"
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  host: guest-book-api.dev.us-east-1.company.com
+  path: /
+
+serviceAccount:
+  create: true
