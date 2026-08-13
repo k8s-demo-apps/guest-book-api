@@ -4,8 +4,8 @@ app:
   version: "1.0.0"
 
 image:
-  repository: n8nio/n8n
-  tag: "v3-nightly-20260813"
+  repository: wordpress
+  tag: "latest"
 
 port: 5679
 
