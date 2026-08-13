@@ -7,7 +7,7 @@ image:
   repository: n8nio/n8n
   tag: "v3-nightly-20260813"
 
-port: 8080
+port: 5679
 
 ingress:
   enabled: true
