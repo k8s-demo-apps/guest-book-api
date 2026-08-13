@@ -4,7 +4,7 @@ app:
   version: "1.0.0"
 
 image:
-  repository: public.ecr.aws/i8e1q7x5/appmod-demo
+  repository: public.ecr.aws/a0m0j3q7/modernengg/nextjs-ui
   tag: "latest"
 
 port: 8080
