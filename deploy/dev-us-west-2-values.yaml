@@ -4,10 +4,10 @@ app:
   version: "1.0.0"
 
 image:
-  repository: public.ecr.aws/a0m0j3q7/modernengg/nextjs-ui
+  repository: nginxdemos/hello
   tag: "latest"
 
-port: 8080
+port: 80
 
 ingress:
   enabled: true
