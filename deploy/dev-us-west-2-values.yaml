@@ -4,8 +4,8 @@ app:
   version: "1.0.0"
 
 image:
-  repository: nginxdemos/hello
-  tag: "latest"
+  repository: paulbouwer/hello-kubernetes
+  tag: "1.10"
 
 port: 80
 
