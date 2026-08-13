@@ -7,7 +7,7 @@ image:
   repository: paulbouwer/hello-kubernetes
   tag: "1.10"
 
-port: 80
+port: 8080
 
 ingress:
   enabled: true
