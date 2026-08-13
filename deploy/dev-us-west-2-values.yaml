@@ -7,7 +7,7 @@ image:
   repository: wordpress
   tag: "latest"
 
-port: 5679
+port: 80
 
 ingress:
   enabled: true
